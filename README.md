@@ -4,7 +4,7 @@ This is a template/base created with Rust using the Nickel framework. Nickel uti
 
 Goals:
 
-Provided an accurate reusable boilerplate
-Share & learn
+- Provided an accurate reusable boilerplate
+- Share & learn
 
 More Coming Soon
