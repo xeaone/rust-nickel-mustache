@@ -8,26 +8,35 @@ use std::collections::HashMap;
 
 fn main() {
 
+    //Implement A Server
     let mut server = Nickel::new();
 
-    // Simple Responses
-    let router = router! {
-        get "/root" => |_req, _res| {
-            "Root"
-        }
-    };
+    server.utilize(router! {
 
-    // Route Using Rustache Template
-    server.get("/", middleware! { |_req, _res|
+        //Simple Response
+        get "/hw" => |req,res| {
+            "Hello World!"
+        }
+
+        //Request & Respone
+        get "/hello/:name" => |req, res| {
+            format!("Hello : {}",req.param("name"))
+        }
+    });
+
+
+    //Route Using Mustache Templateing Agent
+    server.get("/", middleware! { |req, res|
 
         let mut data = HashMap::new();
         data.insert("title","Index");
 
-        return _res.render("views/index.html", &data);
+        return res.render("views/index.html", &data);
     });
 
-
-    server.utilize(router);
+    //Serve A Static Directory
     server.utilize(StaticFilesHandler::new("views/public/"));
+
+
     server.listen("127.0.0.1:8080");
 }
