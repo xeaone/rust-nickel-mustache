@@ -2,7 +2,6 @@
 #[macro_use] extern crate nickel;
 
 use nickel::{Nickel, HttpRouter, StaticFilesHandler};
-
 use std::collections::HashMap;
 
 
@@ -38,5 +37,6 @@ fn main() {
     server.utilize(StaticFilesHandler::new("views/public/"));
 
 
-    server.listen("127.0.0.1:8080");
+
+    server.listen("0.0.0.0:8080");
 }
