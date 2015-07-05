@@ -27,7 +27,7 @@ fn main() {
     //Route Using Mustache Templateing Agent
     server.get("/", middleware! { |req, res|
 
-        let mut data = HashMap::new();
+        let mut data = HashMap::<&str, &str>::new();
         data.insert("title","Index");
 
         return res.render("views/index.html", &data);
